@@ -47,17 +47,17 @@ variable "key_name" {
   default     = "my-key-pair"
 }
 
-variable "project_name" {
-  description = "Name of the project"
-  type        = string
-  default     = "alb-path-routing"
-}
+# variable "project_name" {
+#   description = "Name of the project"
+#   type        = string
+#   default     = "alb-path-routing"
+# }
 
-variable "iam_instance_profile" {
-  description = "IAM instance profile for EC2 instances"
-  type        = string
-  default     = "ec2-instance-profile"
-}
+# variable "iam_instance_profile" {
+#   description = "IAM instance profile for EC2 instances"
+#   type        = string
+#   default     = "ec2-instance-profile"
+# }
 
 variable "sg_id" {
   description = "Security group ID for EC2 instances"
@@ -66,10 +66,10 @@ variable "sg_id" {
 
 }
 
-variable "aws_region" {
-  description = "AWS region for the deployment"
-  type        = string
-  default     = "us-east-1"
-}
+# variable "aws_region" {
+#   description = "AWS region for the deployment"
+#   type        = string
+#   default     = "us-east-1"
+# }
 
 
