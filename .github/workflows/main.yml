@@ -1,0 +1,53 @@
+
+name: Terraform Infra
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Choose the Terraform action'
+        required: true
+        default: 'apply'  # Default action is apply
+        type: choice
+        options:
+          - apply
+          - destroy
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up AWS credentials with OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::211125325699:role/Demo_Access
+          aws-region: us-east-1
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.12.0
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform fmt
+        run: terraform fmt
+
+      - name: Terraform validate
+        run: terraform validate
+
+      - name: Terraform plan
+        run: terraform plan
+
+      - name: Terraform Apply or Destroy
+        run: |
+              if [ "${{ github.event.inputs.action }}" == "apply" ]; then
+                terraform apply -auto-approve
+              elif [ "${{ github.event.inputs.action }}" == "destroy" ]; then
+                terraform destroy -auto-approve
+              fi
