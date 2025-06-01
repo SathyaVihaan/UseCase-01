@@ -10,9 +10,9 @@ The infrastructure includes:
 - Internet Gateway and NAT Gateway for internet connectivity
 - Application Load Balancer with path-based routing
 - Three EC2 instances in private subnets, each serving different content:
-  - Instance A: Responds to the root path (/)
-  - Instance B: Responds to the /images path
-  - Instance C: Responds to the /register path
+  - Web Server-1: Responds to the root path (/)
+  - Web Server-2: Responds to the /images path
+  - Web Server-3: Responds to the /register path
 
 ## Prerequisites
 
@@ -42,10 +42,11 @@ The infrastructure includes:
 - `variables.tf` - Input variables
 - `outputs.tf` - Output values
 - `modules/` - Modular components:
-  - `vpc/` - VPC and networking resources
-  - `security/` - Security groups
-  - `load_balancer/` - ALB and listener rules
-  - `compute/` - EC2 instances and target group attachments
+  - `network/` - VPC and networking resources
+  - `sg/` - Security groups
+  - `alb/` - ALB and listener rules
+  - `ec2/` - EC2 instances 
+  - `target_group/` -  target group and attachments
 - `scripts/` - User data scripts for EC2 instances
 
 ## Notes
