@@ -2,7 +2,7 @@ variable "env" {}
 variable "ami_name" {
   description = "AMI name for EC2 instances"
   type        = string
-  default     = "ami-0c55b159cbfafe1f0" # Amazon Linux 2
+  default     = "ami-0953476d60561c955" # Amazon Linux 2
 }
 
 variable "instance_type" {}
@@ -29,11 +29,19 @@ variable "associate_public_ip_address" {
 
 
 
+# variable "user_data" {
+#   description = "Map of user_data scripts"
+#   type = object({
+#     home     = string
+#     image    = string
+#     register = string
+#   })
+# }
+
+
 variable "user_data" {
-  description = "Map of user_data scripts"
-  type = object({
-    home     = string
-    image    = string
-    register = string
-  })
+  description = "user_data scripts"
+  type        = string
+  default     = ""
+
 }

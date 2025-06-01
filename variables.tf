@@ -25,7 +25,7 @@ variable "availability_zones" {
 variable "ami_id" {
   description = "Map of AMI IDs by AWS region"
   type        = string
-  default     = "ami-084568db4383264d4" # Amazon Linux 2
+  default     = "ami-0953476d60561c955" # Amazon Linux 2
 }
 
 
