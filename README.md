@@ -17,7 +17,9 @@ The infrastructure includes:
 ## Prerequisites
 
 - [Terraform](https://www.terraform.io/downloads.html) (>= 1.2.0)
-- AWS CLI configured with appropriate credentials
+- AWS CLI configured with OpenId connect for accessing resources
+- s3 bucket for storing remote backed tfstate file
+- Used liniting and checkov for following best practises
 
 ## Usage
 
@@ -52,5 +54,6 @@ The infrastructure includes:
 ## Notes
 
 - Each EC2 instance runs Nginx and serves custom HTML content
+- created NATGW and placed routes in each private routing table 
 - Instances are placed in private subnets for enhanced security
 - All traffic to the instances is routed through the ALB
